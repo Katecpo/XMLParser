@@ -46,11 +46,13 @@ public class ParserFrame extends javax.swing.JFrame {
 
         outputConsoleTA.setColumns(20);
         outputConsoleTA.setRows(5);
+        outputConsoleTA.setEnabled(false);
         consoleOutputTA.setViewportView(outputConsoleTA);
 
         outputConsoleLabel.setText("Output console :");
 
         logoLabel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        logoLabel.setForeground(new java.awt.Color(102, 0, 102));
         logoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logoLabel.setText("XML PARSER");
 

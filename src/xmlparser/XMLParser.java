@@ -5,6 +5,8 @@
  */
 package xmlparser;
 
+import xmlparser.hmi.ParserFrame;
+
 /**
  *
  * @author rm792745
@@ -15,7 +17,8 @@ public class XMLParser {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ParserFrame frame = new ParserFrame();
+        frame.show();
     }
     
 }
