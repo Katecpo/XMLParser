@@ -19,6 +19,8 @@ public class XMLParser {
     public static void main(String[] args) {
         ParserFrame frame = new ParserFrame();
         frame.show();
+        frame.setTitle("XML parser");
+        
     }
     
 }

@@ -5,8 +5,11 @@
  */
 package xmlparser.hmi;
 
+import javax.swing.JFileChooser;
+import xmlparser.hmi.filters.*;
+
 /**
- *
+ * HMI
  * @author bd062554
  */
 public class ParserFrame extends javax.swing.JFrame {
@@ -59,8 +62,18 @@ public class ParserFrame extends javax.swing.JFrame {
         fieldXMLBrowser.setText("XML file...");
 
         XMLBrowserButton.setText("...");
+        XMLBrowserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XMLBrowserButtonActionPerformed(evt);
+            }
+        });
 
         DTDBrowserButton.setText("...");
+        DTDBrowserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DTDBrowserButtonActionPerformed(evt);
+            }
+        });
 
         fieldDTDBrowser.setText("DTD file...");
 
@@ -115,6 +128,34 @@ public class ParserFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void XMLBrowserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XMLBrowserButtonActionPerformed
+        JFileChooser fc = new JFileChooser();
+        fc.setMultiSelectionEnabled(false);
+        fc.addChoosableFileFilter(new XmlFilter());
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fc.setAcceptAllFileFilterUsed(false);
+        
+        int returnVal = fc.showOpenDialog(ParserFrame.this);
+        
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            this.fieldXMLBrowser.setText(fc.getSelectedFile().getAbsolutePath());
+        }
+    }//GEN-LAST:event_XMLBrowserButtonActionPerformed
+
+    private void DTDBrowserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DTDBrowserButtonActionPerformed
+        JFileChooser fc = new JFileChooser();
+        fc.setMultiSelectionEnabled(false);
+        fc.addChoosableFileFilter(new DtdFilter());
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fc.setAcceptAllFileFilterUsed(false);
+        
+        int returnVal = fc.showOpenDialog(ParserFrame.this);
+        
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            this.fieldDTDBrowser.setText(fc.getSelectedFile().getAbsolutePath());
+        }
+    }//GEN-LAST:event_DTDBrowserButtonActionPerformed
 
     /**
      * @param args the command line arguments
