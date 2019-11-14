@@ -8,8 +8,10 @@ package xmlparser.tree;
 
 import java.util.ArrayList;
 /**
- *
+ * Représente un noeud d'un arbre
+ * 
  * @author rm792745
+ * @author tj868158
  */
 public class node {
     private String nom;
@@ -42,5 +44,21 @@ public class node {
      */
     public void setPere(node parent){
         this.parent = parent;
+    }
+    
+    /**
+     * 
+     * @return l'ArrayList des fils
+     */
+    public ArrayList<node> getFils(){
+        return this.fils;
+    }
+    
+    /**
+     * 
+     * @return le parent
+     */
+    public node getParent(){
+        return this.parent;
     }
 }
