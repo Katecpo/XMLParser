@@ -8,12 +8,14 @@ package xmlparser.hmi;
 import javax.swing.JFileChooser;
 import xmlparser.Utils;
 import xmlparser.hmi.filters.*;
+import xmlparser.tree.parser;
 
 /**
  * HMI
  * @author bd062554
  */
 public class ParserFrame extends javax.swing.JFrame {
+
     /**
      * Creates new form ParserFrame
      */
@@ -169,11 +171,10 @@ public class ParserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_DTDBrowserButtonActionPerformed
 
     private void processButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processButtonActionPerformed
-        Utils.readFileInString(fieldXMLBrowser.getText());
+        parser p = new parser();
+        p.createXMLtree(Utils.readFileInString(fieldXMLBrowser.getText()));
     }//GEN-LAST:event_processButtonActionPerformed
 
-    
-    
     /**
      * @param args the command line arguments
      */
