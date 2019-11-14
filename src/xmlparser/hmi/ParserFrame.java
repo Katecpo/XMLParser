@@ -6,6 +6,7 @@
 package xmlparser.hmi;
 
 import javax.swing.JFileChooser;
+import xmlparser.Utils;
 import xmlparser.hmi.filters.*;
 
 /**
@@ -13,7 +14,6 @@ import xmlparser.hmi.filters.*;
  * @author bd062554
  */
 public class ParserFrame extends javax.swing.JFrame {
-
     /**
      * Creates new form ParserFrame
      */
@@ -40,6 +40,7 @@ public class ParserFrame extends javax.swing.JFrame {
         XMLBrowserButton = new javax.swing.JButton();
         DTDBrowserButton = new javax.swing.JButton();
         fieldDTDBrowser = new javax.swing.JTextField();
+        processButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +78,13 @@ public class ParserFrame extends javax.swing.JFrame {
 
         fieldDTDBrowser.setText("DTD file...");
 
+        processButton.setText("Process file");
+        processButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                processButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,7 +107,8 @@ public class ParserFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(XMLBrowserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(outputConsoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(processButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -121,9 +130,11 @@ public class ParserFrame extends javax.swing.JFrame {
                     .addComponent(DTDBrowserButton))
                 .addGap(25, 25, 25)
                 .addComponent(outputConsoleLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(consoleOutputTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(processButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,6 +168,12 @@ public class ParserFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DTDBrowserButtonActionPerformed
 
+    private void processButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processButtonActionPerformed
+        Utils.readFileInString(fieldXMLBrowser.getText());
+    }//GEN-LAST:event_processButtonActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -203,5 +220,6 @@ public class ParserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel logoLabel;
     private javax.swing.JLabel outputConsoleLabel;
     private javax.swing.JTextArea outputConsoleTA;
+    private javax.swing.JButton processButton;
     // End of variables declaration//GEN-END:variables
 }
