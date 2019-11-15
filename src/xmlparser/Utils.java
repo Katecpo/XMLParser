@@ -45,6 +45,6 @@ public class Utils {
             e.printStackTrace();
         }
         
-        return contentBuilder.toString();
+        return contentBuilder.toString().replace("\n", "").replace("\r", "").replace("\t", "");
     }
 }

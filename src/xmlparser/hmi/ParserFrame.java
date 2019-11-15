@@ -8,7 +8,8 @@ package xmlparser.hmi;
 import javax.swing.JFileChooser;
 import xmlparser.Utils;
 import xmlparser.hmi.filters.*;
-import xmlparser.tree.parser;
+import xmlparser.tree.Tree;
+import xmlparser.tree.Parser;
 
 /**
  * HMI
@@ -171,8 +172,10 @@ public class ParserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_DTDBrowserButtonActionPerformed
 
     private void processButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processButtonActionPerformed
-        parser p = new parser();
-        p.createXMLtree(Utils.readFileInString(fieldXMLBrowser.getText()));
+        Parser p = new Parser();
+        Tree tree = p.createXMLtree(Utils.readFileInString(fieldXMLBrowser.getText()));
+        
+        outputConsoleTA.append(p.formatTreeOutput(tree));
     }//GEN-LAST:event_processButtonActionPerformed
 
     /**
