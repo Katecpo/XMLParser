@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package xmlparser.tree;
 
 import java.util.ArrayList;
@@ -10,6 +5,7 @@ import java.util.ArrayList;
 /**
  *
  * @author rm792745
+ * @author bd062554
  */
 public class Parser {
     private Node baliseCourante = null;
