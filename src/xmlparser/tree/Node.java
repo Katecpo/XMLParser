@@ -9,19 +9,17 @@ import java.util.ArrayList;
  * @author bd062554
  */
 public class Node {
-    private String nom;
-    private String contenu;
+    private String nom = "";
+    private String contenu = "";
     
     private ArrayList<Node> fils;
     private Node parent;
     
-    /**
-     * 
-     * @param nom obtenir le nom de la balise
-     * @param contenu obtenir le contenu de la balise
-     */
     public Node(Node parent){
         this.parent = parent;
+        this.nom = "";
+        this.contenu = "";
+        this.fils = new ArrayList<>();
     }
     
     /**
@@ -96,7 +94,7 @@ public class Node {
     public String getInfo(String str) {
         String info = str;
         
-        info += this.getNom() + ": " + this.getContenu();
+        info += this.getNom() + ": " + this.getContenu() + "\n";
         for (int i = 0; i < fils.size(); i++) {
             info += fils.get(i).getInfo(info);
         }

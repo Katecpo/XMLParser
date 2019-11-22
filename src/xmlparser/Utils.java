@@ -28,8 +28,7 @@ public class Utils {
      * @param filePath File path
      * @return 
      */
-    public static String readFileInString(String filePath)
-    {
+    public static String readFileInString(String filePath) {
         StringBuilder contentBuilder = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) 
         {

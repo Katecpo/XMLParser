@@ -1,6 +1,7 @@
 package xmlparser.tree;
 
 import java.util.ArrayList;
+import xmlparser.exceptions.ExceptionNeastedTag;
 
 /**
  *
@@ -11,18 +12,24 @@ public class Parser {
     private Node baliseCourante = null;
     private Tree arbre = null;
     
-    public Tree createXMLtree(String fileContent)
+    public Tree createXMLtree(String fileContent) throws ExceptionNeastedTag
     {
         arbre = new Tree();
         String tmp = "";
         
-        for(int i = 0; i< fileContent.length();i++){
+        for(int i = 0; i< fileContent.length();i++) {
             switch(fileContent.charAt(i)){
                 case '<' : 
                     if(fileContent.charAt(i+1) == '/'){
                         if (baliseCourante != null) {
                             if (baliseCourante.getContenu().equals("")) {
                                 baliseCourante.setContenu(tmp);
+                                
+                                String sbs = fileContent.substring(i+2);
+                                sbs = sbs.substring(0,sbs.indexOf(">"));
+                                if (!sbs.equals(baliseCourante.getNom())) {
+                                    throw new ExceptionNeastedTag(baliseCourante.getNom());
+                                }
                             }
                             
                             baliseCourante = baliseCourante.getParent();
@@ -47,10 +54,7 @@ public class Parser {
                     if (baliseCourante != null) {
                         if (baliseCourante.getNom().equals("")) {
                             baliseCourante.setNom(tmp);
-                        }/* else {
-                            baliseCourante = baliseCourante.getParent();
-                            tmp = "";
-                        } */
+                        }
                         tmp = "";
                     }
                 break;
@@ -68,8 +72,8 @@ public class Parser {
     public String formatTreeOutput(Tree tree) {
         String ret = "";
         
-        Node baliseCourante = tree.getRacine();
-        ret += baliseCourante.getInfo(ret);
+        Node racine = tree.getRacine();
+        ret += racine.getInfo(ret);
         
         return ret;
     }

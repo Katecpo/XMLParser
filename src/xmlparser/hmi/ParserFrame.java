@@ -1,7 +1,10 @@
 package xmlparser.hmi;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import xmlparser.Utils;
+import xmlparser.exceptions.ExceptionNeastedTag;
 import xmlparser.hmi.filters.*;
 import xmlparser.tree.Tree;
 import xmlparser.tree.Parser;
@@ -168,9 +171,16 @@ public class ParserFrame extends javax.swing.JFrame {
 
     private void processButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processButtonActionPerformed
         Parser p = new Parser();
-        Tree tree = p.createXMLtree(Utils.readFileInString(fieldXMLBrowser.getText()));
+        Tree tree;
+        try {
+            tree = p.createXMLtree(Utils.readFileInString(fieldXMLBrowser.getText()));
         
-        outputConsoleTA.append(p.formatTreeOutput(tree));
+            outputConsoleTA.setText(p.formatTreeOutput(tree));
+            //outputConsoleTA.append(p.formatTreeOutput(tree));
+        } catch (ExceptionNeastedTag ex) {
+            outputConsoleTA.setText("Error");
+            Logger.getLogger(ParserFrame.class.getName()).log(Level.WARNING, null, ex);
+        }
     }//GEN-LAST:event_processButtonActionPerformed
 
     /**
